@@ -1,0 +1,45 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Eventos Cadastrados</h1>
+			<div th:if="${message != null}">
+				<h1 th:text="${message}"></h1>
+			</div>
+			<div th:if="${list != null}">
+				<div class="d-flex flex-column flex-shrink-0 p-3">
+					<table border="1" cellpadding="5px">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>Início</th>
+								<th>Final</th>
+								<th>Opções</th>
+								<th>Opções</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="evento: ${list}">
+								<td th:text="${evento.id}"></td>
+								<td th:text="${evento.nome}"
+									th:href="@{/evento/evento(id=${evento.id})}"></td>
+								<td
+									th:text="${#temporals.format(evento.dataInicio, 'dd-MM-yyyy')}"
+									th:href="@{/evento/evento(id=${evento.id})}"></td>
+								<td
+									th:text="${#temporals.format(evento.dataFinal, 'dd-MM-yyyy')}"
+									th:href="@{/evento/evento(id=${evento.id})}"></td>
+								<td><a class="button"
+									th:href="@{/evento/edit(id=${evento.id})}">Editar</a>
+								<td><a class="button"
+									th:href="@{/evento/delete(id=${evento.id})}"
+									onclick="return confirm('Deseja mesmo excluir este evento?')">Excluir</a>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

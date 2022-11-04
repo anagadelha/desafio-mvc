@@ -1,0 +1,29 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Lista de Presença</h1>
+			<form method="POST" th:object="${presenca}">
+				<p>Participante</p>
+				<select th:field="*{participanteEvento}">
+					<option th:each="participante : ${listaParticipantes}"
+						th:value="${participante.id}" th:text="${participante.nome}">
+					</option>
+				</select>
+				<p>
+				<p>Data</p>
+				<input type="date" th:field="*{data}"></input>
+				<p>
+					<input type="checkbox" th:field="*{isPresente}"
+						th:checked="*{isPresente}">Presente <input type="checkbox"
+						th:field="*{isAtrasado}" th:checked="*{isAtrasado}">Atrasado
+
+				
+				<p>
+					<input class="btn btn-info btn-lg btn-block" type="submit"></input>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

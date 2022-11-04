@@ -1,0 +1,97 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Cadastro de Atividades</h1>
+			<div class="card shadow mb-4" style="padding: 30px;">
+				<form method="POST" th:object="${atividades}"
+					th:action="@{/atividades/editar}">
+					<div class="mb-3">
+						<input type="hidden" th:field="*{id}"></input> Nome da Atividade:
+						<input type="text" th:field="*{nome}"></input><br> 
+					</div>
+					<div class="mb-3">
+						      Data de Início: <input type="date" th:field="*{dataInicio}"></input><br> 
+					</div>
+					<div class="form-outline mb-4">
+						       Data Final: <input type="date" th:field="*{dataEntrega}"></input><br>
+					</div>
+					<div class="form-outline mb-4">
+					Evento:
+					<select th:field="*{evento}"> 
+						<option th:each="evento : ${listaEventos}" 
+							th:value="${evento.id}" th:text="${evento.nome}"></option>
+					</select>   
+					</div>
+					   
+					<div class="form-outline mb-4">
+						     
+						<button class="btn btn-info btn-lg btn-block" type="submit">Cadastrar
+							Atividade</button>
+					</div>
+					    
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:replace="compartilhado/footer"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Atividades</title>
+</head>
+<body>
+		<form method="POST" th:action="@{atividades}" th:object="${atividades">
+		<input type="hidden" th:field="*{id}">    
+		Nome da Atividade:<input type="text" th:field="*{nome}"></input>
+		Data Inicial da Atividade:<input type="date" th:field="*{dataInicio}"></input>
+		Data Final da Atividade:<input type="date" th:field="*{dataFinal}" ></input>
+		<button type="submit">Cadastrar Atividade</button>
+		</form>
+</body>
+</html> -->

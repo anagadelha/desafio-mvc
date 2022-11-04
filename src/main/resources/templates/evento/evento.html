@@ -1,0 +1,12 @@
+<div th:replace="compartilhado/header"></div>
+	<div th:if="${message != null}">
+		<span th:text="${message}"></span>
+	</div>
+
+	<div th:if="${evento != null}">
+	Id:<span th:text="${evento.id}"></span><br>
+	Nome Do Evento:<span th:text="${evento.nome}"></span><br>
+	Início:<span th:text="${evento.dataInicio}"></span><br>
+	Final:<span th:text="${evento.dataFinal}"></span>
+	</div>
+<div th:replace="compartilhado/footer"></div>

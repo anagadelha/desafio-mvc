@@ -1,0 +1,32 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Cadastro de Grupos</h1>
+			<div class="card shadow mb-4" style="padding: 30px;">
+				<form method="POST" th:object="${grupo}"
+					th:action="@{/grupo/editar}">
+					<div class="mb-3">
+						<input type="hidden" th:field="*{id}"></input> <label for="nome">Nome
+							do grupo:</label> <input type="text" th:field="*{nome}" required></input>
+						<p>
+					</div>
+					<div class="mb-3">
+						<label for="quantidadePessoas">Quantidade de Integrantes:</label>
+						<input type="number" th:field="*{quantidadePessoas}" required></input>
+
+					</div>
+					<div class="mb-3">
+						<label for="grupo">Evento:</label> <select th:field="*{evento}">
+							<option th:each="evento : ${listaEventos}"
+								th:value="${evento.id}" th:text="${evento.nome}"></option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<button class="btn btn-info btn-lg btn-block" type="submit">Cadastrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

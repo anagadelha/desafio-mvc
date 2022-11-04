@@ -1,0 +1,39 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Lista de administradores</h1>
+			<div class="d-flex flex-column flex-shrink-0 p-3">
+				<table border="1" cellpadding="5px">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Usuário</th>
+							<th>E-mail</th>
+							<th>Quatro letras</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tfoot>
+					<tbody>
+						<tr th:each="administrador : ${administradores}">
+							<td th:text="${administrador.id}"></td>
+							<td th:text="${administrador.usuario}"></td>
+							<td th:text="${administrador.email}"></td>
+							<td th:text="${administrador.quatroLetras}"></td>
+							<td><a class="btn btn-info btn-lg btn-block"
+								th:href="@{'/administradores/' + ${administrador.id}}">Editar</a></td>
+							<td><a href="#" class="btn btn-info btn-lg btn-block"
+								th:onclick="'if(confirm(\'Deseja excluir o administrador?\')) { window.location.href = \'' 
+						+ @{/administradores/{id}(id=${administrador.id})} + '/excluir\' } '">Excluir</a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:replace="compartilhado/footer"></div>

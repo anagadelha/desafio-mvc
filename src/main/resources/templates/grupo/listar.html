@@ -1,0 +1,35 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Grupos Cadastrados</h1>
+			<div th:if="${mensagem != null}" th:text="${mensagem}"></div>
+			<div class="d-flex flex-column flex-shrink-0 p-3">
+				<table border="1" cellpadding="5px">
+					<thead>
+						<tr>
+							<th>ID do Grupo</th>
+							<th>Nome do Grupo</th>
+							<th>Quantidade de Integrantes</th>
+							<th>Gerenciar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="grupo : ${listaGrupos}">
+							<td th:text="${grupo.id}"></td>
+							<td><a th:text="${grupo.nome}"
+								th:href="@{/grupo/visualizar(id=${grupo.id})}"></a></td>
+							<td th:text="${grupo.quantidadePessoas}"></td>
+							<td><a class="btn btn-info btn-lg btn-block"
+								th:href="@{/grupo/editar(id=${grupo.id})}">Editar</a>
+								<a class="btn btn-info btn-lg btn-block" 
+								th:href="@{/grupo/excluir(id=${grupo.id})}"
+								onclick="return confirm('Deseja mesmo excluir este grupo?')">Excluir</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

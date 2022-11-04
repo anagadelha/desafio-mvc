@@ -1,0 +1,37 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="text-center my-5">
+		<h1 class="fw-bolder">Editar Cadastro</h1>
+		<div  class="card shadow mb-4" style="padding: 30px;">
+			<form method="POST"
+				th:action="@{'/administradores/' + ${administrador?.id} + '/editar'}">
+				<div class="mb-3">
+					<label class="form-label">Usuário</label> <input type="text"
+						class="form-control" th:value="${administrador?.usuario}" required
+						id="usuario" name="usuario"
+						placeholder="Digite o seu nome de usuário">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Senha</label> <input type="password"
+						class="form-control" th:value="${administrador?.senha}" required
+						id="senha" name="senha" placeholder="Digite a sua senha">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">E-mail</label> <input type="email"
+						class="form-control" th:value="${administrador?.email}" required
+						id="email" name="email" placeholder="Digite o seu e-mail">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Quatro letras</label> <input
+						type="quatroLetras" class="form-control"
+						th:value="${administrador?.quatroLetras}" required
+						id="quatroLetras" name="quatroLetras"
+						placeholder="Digite as suas quatro letras">
+				</div>
+				<button type="submit" class="btn btn-primary">Editar
+					cadastro</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

@@ -1,0 +1,44 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="d-flex flex-column flex-shrink-0 p-3">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Atividades Cadastradas</h1>
+			<div th:if="${mensagem != null}" th:text="${mensagem}"></div>
+			<div class="d-flex flex-column flex-shrink-0 p-3">
+				<table border="1" cellpadding="5px">
+					<thead>
+						<tr>
+							<th>ID da Atividade</th>
+							<th>Nome da Atividade</th>
+							<th>Início da Atividade</th>
+							<th>Fim da Atividade</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="atividades: ${lista}">
+							<td th:text="${atividades.id}"></td>
+							<td th:text="${atividades.nome}"
+								th:href="@{/atividades/atividades(id=${atividades.id})}"></td>
+							<td
+								th:text="${#temporals.format(atividades.dataInicio, 'dd/MM/yyyy')}"
+								th:href="@{/atividades/atividades(id=${atividades.id})}"></td>
+							<td
+								th:text="${#temporals.format(atividades.dataEntrega, 'dd/MM/yyyy')}"
+								th:href="@{/atividades/atividades(id=${atividades.id})}"></td>
+							<td><a class="button"
+								th:href="@{/atividades/editar(id=${atividades.id})}">
+									<button type="button" class="btn btn-info btn-lg btn-block">Editar</button>
+							</a> <a class="button"
+								th:href="@{/atividades/excluir(id=${atividades.id})}"
+								onclick="return confirm('Deseja mesmo excluir esta atividade?')">
+									<button type="button" class="btn btn-info btn-lg btn-block">Excluir</button>
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>

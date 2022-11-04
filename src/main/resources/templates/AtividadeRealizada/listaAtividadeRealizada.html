@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Atividades</title>
+</head>
+<body>
+	<h2>Lista de Atividades</h2>
+	<form method="POST" th:object="${atividadeRealizada}">
+		<h4>Participante</h4>
+		<select th:field="*{participanteEvento}">
+			<option th:each="participante : ${listaParticipantes}"
+				th:value="${participante.id}" th:text="${participante.nome}"></option>
+		</select> <input type="checkbox" th:field="*{realizouAtv}"
+			th:checked="*{realizouAtv}">Realizou Atividade
+		<p>
+			<input type="submit"></input>
+		</p>
+	</form>
+</body>
+</html>

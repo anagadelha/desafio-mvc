@@ -1,0 +1,26 @@
+<div th:replace="compartilhado/header"></div>
+<div class="container">
+	<div class="text-center my-5">
+	<h1 class="fw-bolder">Novo evento</h1>
+		<div class="card shadow mb-4" style="padding: 30px;">
+			<form th:action="@{/evento/create}" th:object="${evento}"
+				method="POST">
+				<div class="mb-3">
+					<input type="hidden" th:field="*{id}"></input> Nome Do Evento: <input
+						type="text" th:field="*{nome}"></input>
+				</div>
+				<div class="mb-3">
+					<br> Data Início: <input type="date" th:field="*{dataInicio}"></input>
+				</div>
+				<div class="mb-3">
+					<br>Data Final: <input type="date" th:field="*{dataFinal}"></input><br>
+				</div>
+				<div class="mb-3">
+					<button class="btn btn-info btn-lg btn-block" type="submit">Cadastrar
+						Evento</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div th:replace="compartilhado/footer"></div>
